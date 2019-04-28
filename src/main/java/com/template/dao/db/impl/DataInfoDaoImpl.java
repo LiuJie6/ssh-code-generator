@@ -80,7 +80,6 @@ public class DataInfoDaoImpl implements IDataInfoDao {
         List<Map<String, Object>> result = new ArrayList<>();
         try {
             Session session = this.commonDao.getSession();
-            System.out.println(hql);
             Query query = session.createSQLQuery(hql);
             List list = query.list();
             for (int i = 0; i < list.size(); i++) {

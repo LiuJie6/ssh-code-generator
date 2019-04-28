@@ -119,19 +119,19 @@ public class GenerateUtils {
             packagePath = packageName.replace(".", File.separator) + File.separator;
         }
 
-        switch (template) {
-            case "Dao.java.vm":
-                fileName = packagePath + "dao" + File.separator + className + "Dao.java";
-                break;
-            case "Entity.java.vm":
-                fileName = packagePath + "entity" + File.separator + className + "Entity.java";
-                break;
-            case "Service.java.vm":
-                fileName = packagePath + "service" + File.separator + className + "Service.java";
-                break;
-            case "ServiceImpl.java.vm":
-                fileName = packagePath + "serviceImpl" + File.separator + className + "ServiceImpl.java";
+        if (template.contains("Dao.java.vm")) {
+            fileName = packagePath + "dao" + File.separator + className + "Dao.java";
         }
+        if (template.contains("Entity.java.vm")) {
+            fileName = packagePath + "entity" + File.separator + className + "Entity.java";
+        }
+        if (template.contains("Service.java.vm")) {
+            fileName = packagePath + "service" + File.separator + className + "Service.java";
+        }
+        if (template.contains("ServiceImpl.java.vm")) {
+            fileName = packagePath + "serviceImpl" + File.separator + className + "ServiceImpl.java";
+        }
+
         return fileName;
     }
 
@@ -154,7 +154,7 @@ public class GenerateUtils {
             ColumnModel columnModel = new ColumnModel();
             columnModel.setColumnName(column.get("columnName").toString());
             columnModel.setDataType(column.get("dataType").toString());
-            columnModel.setComments(column.get("comments").toString());
+            columnModel.setComments(column.get("columnComment").toString());
             columnModel.setExtra(column.get("extra").toString());
 
             //列名转换成java属性名
@@ -210,7 +210,9 @@ public class GenerateUtils {
 
             try {
                 //添加到zip
-                zip.putNextEntry(new ZipEntry(buildFileName(template, tableModel.getClassName(), configuration.getString("package"))));
+                String fileName = buildFileName(template, tableModel.getClassName(), configuration.getString("package"));
+                System.out.println("文件名-----" + fileName);
+                zip.putNextEntry(new ZipEntry(fileName));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();

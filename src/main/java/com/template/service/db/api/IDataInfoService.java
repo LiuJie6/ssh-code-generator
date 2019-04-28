@@ -1,5 +1,7 @@
 package com.template.service.db.api;
 
+import com.template.model.api.db.CodeGenerateModel;
+
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +25,20 @@ public interface IDataInfoService {
      * @param tableName 表名
      * @return 查询结果
      */
-    List<Map<String, Object>> queryTablesInfo(String tableName);
+    Map<String, Object> queryTableInfo(String tableName);
+
+    /**
+     * 根据表名查询表中各列的信息
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
+    List<Map<String, Object>> queryColumnsInfo(String tableName);
 
     /**
      * 代码生成
      *
-     * @param tableNames 表名列表
-     * @param response   response
+     * @param params 表名列表
      */
-    void codeGenerate(String[] tableNames, HttpServletResponse response);
+    byte[] codeGenerate(CodeGenerateModel params) throws Exception;
 }

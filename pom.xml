@@ -60,20 +60,6 @@
       <version>${spring.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.amqp/spring-rabbit -->
-    <dependency>
-      <groupId>org.springframework.amqp</groupId>
-      <artifactId>spring-rabbit</artifactId>
-      <version>2.0.6.RELEASE</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
-      <version>${spring-kafka.version}</version>
-    </dependency>
-
     <dependency>
       <groupId>c3p0</groupId>
       <artifactId>c3p0</artifactId>
@@ -128,39 +114,12 @@
       <version>${mysql.version}</version>
     </dependency>
 
-    <!--SQLServer-->
-    <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>mssql-jdbc</artifactId>
-      <version>6.1.0.jre8</version>
-    </dependency>
-
 
     <!--json-->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20171018</version>
-    </dependency>
-
-    <!-- rabbitmq -->
-    <dependency>
-      <groupId>com.rabbitmq</groupId>
-      <artifactId>amqp-client</artifactId>
-      <version>3.6.5</version>
-    </dependency>
-
-    <!-- 邮件 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>javax.mail-api</artifactId>
-      <version>1.5.5</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
@@ -171,49 +130,10 @@
     </dependency>
 
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-email</artifactId>
-      <version>1.4</version>
-    </dependency>
-
-    <!-- 电子发票打印工具-->
-    <dependency>
-      <groupId>com.yk.invoice</groupId>
-      <artifactId>printing-util</artifactId>
-      <version>1.2.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.yk.collection</groupId>
-      <artifactId>common-util</artifactId>
-      <version>1.2</version>
-    </dependency>
-
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
-
-    <!--ES相关   开始-->
-    <dependency>
-      <groupId>io.searchbox</groupId>
-      <artifactId>jest</artifactId>
-      <version>5.3.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.elasticsearch</groupId>
-      <artifactId>elasticsearch</artifactId>
-      <version>5.5.3</version>
-    </dependency>
-
-    <!-- transport客户端 -->
-    <dependency>
-      <groupId>org.elasticsearch.client</groupId>
-      <artifactId>transport</artifactId>
-      <version>5.5.1</version>
-    </dependency>
-    <!--ES相关   结束-->
 
     <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
     <dependency>
@@ -228,6 +148,26 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.9.2</version>
     </dependency>
+
+    <!-- 配置文件读取 -->
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.10</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.10</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
+      <version>1.7-beta1</version>
+    </dependency>
+
 
   </dependencies>
 

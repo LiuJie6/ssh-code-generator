@@ -11,4 +11,9 @@
 # 1 select database()   当前使用的数据库
 # 2 information_schema表：  https://blog.csdn.net/demonson/article/details/80388677
 
+
+# 二 相关知识
+# 1 获取配置文件 https://kanpiaoxue.iteye.com/blog/2088832
+# 2 WordUtils对单词的操作 https://www.cnblogs.com/-scl/p/7680012.html
+# 3 StringUtils类常用方法 https://blog.csdn.net/qq_39964694/article/details/80338734
 ```

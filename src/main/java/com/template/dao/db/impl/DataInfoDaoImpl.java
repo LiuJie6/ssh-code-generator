@@ -33,11 +33,50 @@ public class DataInfoDaoImpl implements IDataInfoDao {
     @Resource(name = "commonDao")
     private ICommonDao commonDao;
 
+
+    /**
+     * 根据表名查询表信息
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
     @Override
-    public List<Map<String, Object>> queryTablesInfo(String tableName) {
+    public Map<String, Object> queryTableInfo(String tableName) {
+        Map<String, Object> map = new HashMap<>();
+        String hql = "select table_name as tableName,engine,table_comment as tableComment,create_time as createTime " +
+                "from information_schema.tables " +
+                "where table_name = '" + tableName + "' and table_schema = (select database()) ";
+        try {
+            Session session = this.commonDao.getSession();
+            Query query = session.createSQLQuery(hql);
+            List list = query.list();
+            if (list.size() > 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    Object o = list.get(i);
+                    Object[] values = (Object[]) o;
+                    map.put("tableName", values[0].toString());
+                    map.put("engine", values[1].toString());
+                    map.put("tableComment", values[2].toString());
+                    map.put("createTime", values[3].toString());
+                }
+            }
+        } catch (Exception e) {
+            logger.info("查询表信息失败：" + e.getMessage());
+        }
+        return map;
+    }
+
+    /**
+     * 根据表名查询表中列的信息
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
+    @Override
+    public List<Map<String, Object>> queryColumnsInfo(String tableName) {
         String hql = "select column_name as columnName, data_type as dataType, column_comment as columnComment, column_key as columnKey, extra " +
                 "from information_schema.columns " +
-                "where table_name like  '%" + tableName + "%' and table_schema = (select database()) order by ordinal_position";
+                "where table_name =  '" + tableName + "' and table_schema = (select database()) order by ordinal_position";
         List<Map<String, Object>> result = new ArrayList<>();
         try {
             Session session = this.commonDao.getSession();

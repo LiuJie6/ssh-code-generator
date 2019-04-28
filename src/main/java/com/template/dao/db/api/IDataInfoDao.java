@@ -16,5 +16,19 @@ import java.util.Map;
 
 public interface IDataInfoDao {
 
-    List<Map<String,Object>> queryTablesInfo(String tableName);
+    /**
+     * 根据表名查询表信息
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
+    Map<String, Object> queryTableInfo(String tableName);
+
+    /**
+     * 根据表名查询表中列的信息
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
+    List<Map<String, Object>> queryColumnsInfo(String tableName);
 }
